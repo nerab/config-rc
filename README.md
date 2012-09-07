@@ -1,6 +1,14 @@
 # ConfigRC
 
-TODO: Write a gem description
+Provides simple, hierarchical app configuration:
+
+  * Environment variables take precendence over
+    * Command-line options, which take precendence over
+      * rc-file options.
+
+Environment variables are expected to be prefixed with the application name and an underscore (e.g. `app_foo` will set `foo`). The rc file is assumed to have the usual name of `.apprc` in the user's home directory. An additional options hash can be passed.
+
+[![Build Status](https://secure.travis-ci.org/nerab/config-rc.png?branch=master)](http://travis-ci.org/nerab/config-rc)
 
 ## Installation
 
@@ -18,7 +26,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+See test/bin/app for an example.
 
 ## Contributing
 

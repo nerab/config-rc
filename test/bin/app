@@ -1,11 +1,15 @@
 #!/usr/bin/env ruby
 
 #
-# Test like
+# Sample usage:
 #
-# HOME=$(pwd)/test/fixtures app_something=env test/bin/app.rb
+#   HOME=$(pwd)/test/fixtures test/bin/app.rb
 #
-
+# to see foo being read from test/fixtures/.testconfigrc. Override this
+# setting with an environment variable:
+#
+#   HOME=$(pwd)/test/fixtures testconfig_foo=env test/bin/app.rb
+#
 require 'bundler'
 Bundler.require
 
