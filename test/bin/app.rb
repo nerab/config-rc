@@ -13,7 +13,7 @@ require 'config-rc'
 
 class App
   attr_reader :config
-  APP_NAME = 'app'
+  APP_NAME = 'testconfig'
 
   def initialize
     @config = ConfigRC::Configuration.new(APP_NAME, 'foo' => 'option')
