@@ -16,4 +16,6 @@ Gem::Specification.new do |gem|
   gem.version       = ConfigRC::VERSION
 
   gem.add_runtime_dependency 'require_all'
+  gem.add_development_dependency 'minitest'
+  gem.add_development_dependency 'pry'
 end

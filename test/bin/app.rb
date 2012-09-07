@@ -3,7 +3,7 @@
 #
 # Test like
 #
-# HOME=$(pwd)/test/fixtures app_some=foobar app_other=else test/bin/app.rb
+# HOME=$(pwd)/test/fixtures app_something=env test/bin/app.rb
 #
 
 require 'bundler'
@@ -12,15 +12,25 @@ Bundler.require
 require 'config-rc'
 
 class App
+  attr_reader :config
   APP_NAME = 'app'
 
   def initialize
-    @config ||= ConfigRC::Configuration.new(APP_NAME)
+    @config = ConfigRC::Configuration.new(APP_NAME, 'foo' => 'option')
   end
 
   def to_s
-    "Hi, my name is '#{APP_NAME}', and I am configured like this:\n#{@config}"
+    "Hi, my name is '#{APP_NAME}', and I do " <<
+      if @config.any?
+        "have configuration:"
+      else
+        "not have any configuration."
+      end
   end
 end
 
-puts App.new.to_s
+app = App.new
+puts app.to_s
+app.config.each do |k, v|
+  puts "#{k}=#{v}"
+end

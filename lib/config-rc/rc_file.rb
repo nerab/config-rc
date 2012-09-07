@@ -2,13 +2,12 @@ module ConfigRC
   #
   # Configuration stored in a file
   #
-  class RcFile < Base
+  class RcFileProvider < BaseProvider
     def initialize(prefix)
       @path = File.expand_path(File.join('~', ".#{prefix}rc"))
     end
 
-    protected
-    def as_map
+    def map
       props = {}
       File.open(@path).select{|line| not line =~ /^[ \t]*(#.+)*$/}.each do |line|
         k, v = line.chomp.split('=', 2)

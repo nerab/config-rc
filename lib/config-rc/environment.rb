@@ -2,15 +2,13 @@ module ConfigRC
   #
   # Configuration stored as environment variable
   #
-  class Environment < Base
+  class EnvironmentProvider < BaseProvider
     def initialize(prefix)
       @prefix = "#{prefix}_"
     end
 
-    protected
-    def as_map
-      # TODO Remove prefix
-      ENV.select{|k, v| k.start_with?(@prefix)}
+    def map
+      ENV.select{|k, v| k.start_with?(@prefix)}.each_with_object({}){|(k, v), h| h[k.gsub(@prefix, '')] = v}
     end
   end
 end
