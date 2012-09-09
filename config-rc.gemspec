@@ -4,9 +4,9 @@ require File.expand_path('../lib/config-rc/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors = ["Nicholas E. Rabenau"]
   gem.email = "nerab@gmx.net"
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = %q{Opinionated configuration library. Reads from config file, command line option and environment variable.}
+  gem.summary       = %q{Opinionated config library}
+  gem.homepage      = "http://github.com/nerab/config-rc"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
