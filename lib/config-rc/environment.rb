@@ -4,7 +4,7 @@ module ConfigRC
   #
   class EnvironmentProvider < BaseProvider
     def initialize(prefix)
-      @prefix = "#{prefix}_"
+      @prefix = "#{prefix.gsub /[^\\_a-zA-Z0-9]/, '_'}_" # replace all characters inacceptable for bash variable names with an underscore
     end
 
     def map
