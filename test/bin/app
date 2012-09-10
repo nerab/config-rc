@@ -14,13 +14,21 @@ require 'bundler'
 Bundler.require
 
 require 'config-rc'
+require 'optparse'
+
+options = {}
+OptionParser.new do |opts|
+  opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
+    options[:verbose] = v
+  end
+end.parse!
 
 class App
   attr_reader :config
   APP_NAME = 'testconfig'
 
-  def initialize
-    @config = ConfigRC::Configuration.new(APP_NAME, 'foo' => 'option')
+  def initialize(options = {})
+    @config = ConfigRC::Configuration.new(APP_NAME, options)
   end
 
   def to_s
@@ -33,7 +41,7 @@ class App
   end
 end
 
-app = App.new
+app = App.new(options)
 puts app.to_s
 app.config.each do |k, v|
   puts "#{k}=#{v}"
