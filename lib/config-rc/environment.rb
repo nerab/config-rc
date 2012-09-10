@@ -8,7 +8,7 @@ module ConfigRC
     end
 
     def map
-      ENV.select{|k, v| k.start_with?(@prefix)}.each_with_object({}){|(k, v), h| h[k.gsub(@prefix, '')] = v}
+      ENV.select{|k, v| k.start_with?(@prefix)}.each_with_object({}){|(k, v), h| h[k.gsub(@prefix, '').to_sym] = v}
     end
   end
 end

@@ -8,7 +8,8 @@ module ConfigRC
     end
 
     def map
-      @options
+      # symbolize keys
+      @options.each_with_object({}){|(k, v), h| h[k.to_sym] = v}
     end
   end
 end

@@ -11,7 +11,7 @@ module ConfigRC
       props = {}
       File.open(@path).select{|line| not line =~ /^[ \t]*(#.+)*$/}.each do |line|
         k, v = line.chomp.split('=', 2)
-        props[k] = v
+        props[k.to_sym] = v
       end if File.exist?(@path)
       props
     end
